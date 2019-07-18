@@ -23,7 +23,7 @@ const ctx = vm.createContext(context_global),
     )
   ),
   ipc = new Worker(
-    path.join(
+    path.resolve(
       path.dirname(url.fileURLToPath(import.meta.url)),
       "transport.mjs"
     ),
@@ -38,6 +38,11 @@ const ctx = vm.createContext(context_global),
       ]
     }
   );
+
+console.log(path.resolve(
+      path.dirname(url.fileURLToPath(import.meta.url)),
+      "transport.mjs"
+    ));
 
 function bufferFromU32(x) {
   const buf = Buffer.allocUnsafe(4);
